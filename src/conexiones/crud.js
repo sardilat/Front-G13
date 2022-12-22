@@ -1,96 +1,89 @@
 import back from './back';
 
 class crud {
-    async GET(resource){
+    async GET (resource){
 
         const token = localStorage.getItem("token");
         let bearer;
-        if (token === "") {
-            bearer = "";
-        } else {
+        if( token==="" ){
+            bearer=""           
+        }else{
             bearer = `${token}`;
         }
-
         const data = {
-            method: 'GET',
+            method:'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'x-auth-token': bearer
+                'Content-type':'application/json',
+                'x-auth-token':bearer
             }
         }
-        const url = `${back.api.baseURL}${resource}`
-        let response = (await (await fetch(url, data)).json())
+        const url = `${back.api.baseURL}${resource}`;
+        let response = (await(await fetch(url,data)).json())
         return response
-
     }
-    async POST(resource, body){
-      
+/************************************************************************************/  
+    async POST (resource, body){
+        
         const token = localStorage.getItem("token");
         let bearer;
-        if(token ===""){
-            bearer = "";
-        } else {
+        if( token==="" ){
+            bearer=""           
+        }else{
             bearer = `${token}`;
         }
-        
-        
         const data = {
-            method: 'POST',
+            method:'POST',
             body: JSON.stringify(body),
             headers: {
-                'Content-Type':'application/json',
-                'x-auth-token': bearer
+                'Content-type':'application/json',
+                'x-auth-token':bearer
             }
         }
-        const url = `${back.api.baseURL}${resource}`
-        let response = (await (await fetch(url, data)).json())
+        const url = `${back.api.baseURL}${resource}`;
+        let response = (await(await fetch(url,data)).json())
         return response
-        
     }
+/************************************************************************************/     
     async PUT(resource, body){
+        
         const token = localStorage.getItem("token");
         let bearer;
-        if(token ===""){
-            bearer = "";
-        } else {
+        if( token==="" ){
+            bearer=""           
+        }else{
             bearer = `${token}`;
         }
-        
-        
         const data = {
-            method: 'PUT',
+            method:'PUT',
             body: JSON.stringify(body),
             headers: {
-                'Content-Type':'application/json',
-                'x-auth-token': bearer
+                'Content-type':'application/json',
+                'x-auth-token':bearer
             }
         }
-        const url = `${back.api.baseURL}${resource}`
-        let response = (await (await fetch(url, data)).json())
+        const url = `${back.api.baseURL}${resource}`;
+        let response = (await(await fetch(url,data)).json())
         return response
-        
     }
-    async DELETE(resource){
-        
+    async DELETE (resource){
+
         const token = localStorage.getItem("token");
         let bearer;
-        if (token === "") {
-            bearer = "";
-        } else {
+        if( token==="" ){
+            bearer=""            
+        }else{
             bearer = `${token}`;
         }
-
         const data = {
-            method: 'DELETE',
+            method:'DELETE',
             headers: {
-                'Content-Type': 'application/json',
-                'x-auth-token': bearer
+                'Content-type':'application/json',
+                'x-auth-token':bearer
             }
         }
-        const url = `${back.api.baseURL}${resource}`
-        let response = (await (await fetch(url, data)).json())
+        const url = `${back.api.baseURL}${resource}`;
+        let response = (await(await fetch(url,data)).json())
         return response
     }
-}
-
+};
 export default new crud();
